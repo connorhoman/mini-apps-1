@@ -8,8 +8,8 @@ var gameWon = false;
 var changeSquare = function(square) {
 	if (!square.innerHTML && !gameWon) {
 		square.innerHTML = currentTurn;
-		winChecker();
 		changeTurn();
+		winChecker();
 	}
 }
 
@@ -44,9 +44,8 @@ var winChecker = function() {
 		var layout = winningLayouts[i];
 		if (pieces[layout[0]] === pieces[layout[1]] && pieces[layout[0]] === pieces[layout[2]]) {
 			if (pieces[layout[0]] !== '') {
-				displayWin();
 				gameWon = true;
-				currentTurn = pieces[layout[0]];
+				displayWin(pieces[layout[0]]);
 				break;
 			}
 		}
@@ -65,8 +64,19 @@ var winChecker = function() {
 	}
 }
 
-var displayWin = function() {
-	window.alert(currentTurn + ' has WON!');
+var displayWin = function(winner) {
+	window.alert('Player: ' + winner + ' has WON!');
+
+	if (winner === 'X') {
+		var total = document.getElementById('player1').innerHTML;
+		document.getElementById('player1').innerHTML = (Number(total) + 1);
+	}
+	if (winner === 'O') {
+		var total = document.getElementById('player2').innerHTML;
+		document.getElementById('player2').innerHTML = (Number(total) + 1);
+	}
+
+	currentTurn = winner;
 }
 
 var displayTie = function() {
