@@ -19,15 +19,17 @@ var winChecker = function() {
 		pieces.push(board[i].innerHTML);
 	}
 
-
 	for (var i = 0; i < winningLayouts.length; i++) {
 		var layout = winningLayouts[i];
 		if (pieces[layout[0]] === pieces[layout[1]] && pieces[layout[0]] === pieces[layout[2]]) {
-			displayWin();
-			gameWon = true;
-			break;
+			if (pieces[layout[0]] !== '') {
+				displayWin();
+				gameWon = true;
+				break;
+			}
 		}
 	}
+
 	if (!gameWon) {
 		var tied = true;
 		for (var i = 0; i < pieces.length; i++) {
@@ -53,7 +55,11 @@ var changeSquare = function(square) {
 }
 
 var newGame = function() {
-	// wipe board clean
+	var board = document.getElementsByClassName('square');
+	for (var i = 0; i < board.length; i++) {
+		board[i].innerHTML = '';
+	}
+	currentTurn = 'X';
 }
 
 
