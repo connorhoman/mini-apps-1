@@ -25,6 +25,7 @@ var newGame = function() {
 	var board = document.getElementsByClassName('square');
 	for (var i = 0; i < board.length; i++) {
 		board[i].innerHTML = '';
+		board[i].style.color = 'black';
 	}
 	gameWon = false;
 }
@@ -45,7 +46,7 @@ var winChecker = function() {
 		if (pieces[layout[0]] === pieces[layout[1]] && pieces[layout[0]] === pieces[layout[2]]) {
 			if (pieces[layout[0]] !== '') {
 				gameWon = true;
-				displayWin(pieces[layout[0]]);
+				displayWin(pieces[layout[0]], board, layout);
 				break;
 			}
 		}
@@ -64,8 +65,11 @@ var winChecker = function() {
 	}
 }
 
-var displayWin = function(winner) {
-	window.alert('Player: ' + winner + ' has WON!');
+var displayWin = function(winner, board, layout) {
+	debugger;
+	for (var i = 0; i < layout.length; i++) {
+		board[layout[i]].style.color = 'red';
+	}
 
 	if (winner === 'X') {
 		var total = document.getElementById('player1').innerHTML;
@@ -76,6 +80,7 @@ var displayWin = function(winner) {
 		document.getElementById('player2').innerHTML = (Number(total) + 1);
 	}
 
+	window.alert('Player: ' + winner + ' has WON!');
 	currentTurn = winner;
 }
 
