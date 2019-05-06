@@ -2,7 +2,7 @@
 
 header {
   background-color: rgba(255, 255, 255, 0.8);
-  font-family: Courier;
+  font-family: 'Courier New';
 }
 
 .board {
@@ -22,9 +22,10 @@ header {
 }
 
 .button {
-  font-family: Courier;
+  font-family: 'Courier New';
   height: 50px;
   width: 200px;
+  font-size: 20px;
 }
 
 h1 {

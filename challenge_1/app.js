@@ -72,12 +72,12 @@ var displayWin = function(winner, board, layout) {
 	}
 
 	if (winner === 'X') {
-		var total = document.getElementById('player1').innerHTML;
-		document.getElementById('player1').innerHTML = (Number(total) + 1);
+		var total = document.getElementById('player1Score').innerHTML;
+		document.getElementById('player1Score').innerHTML = (Number(total) + 1);
 	}
 	if (winner === 'O') {
-		var total = document.getElementById('player2').innerHTML;
-		document.getElementById('player2').innerHTML = (Number(total) + 1);
+		var total = document.getElementById('player2Score').innerHTML;
+		document.getElementById('player2Score').innerHTML = (Number(total) + 1);
 	}
 
 	window.alert('Player: ' + winner + ' has WON!');
