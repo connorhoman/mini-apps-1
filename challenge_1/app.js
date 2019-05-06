@@ -4,8 +4,6 @@ var currentTurn = 'X';
 var gameWon = false;
 
 
-
-
 // Controllers --------------------------
 
 var changeSquare = function(square) {
