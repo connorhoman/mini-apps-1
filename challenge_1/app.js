@@ -3,6 +3,9 @@
 var currentTurn = 'X';
 var gameWon = false;
 
+
+
+
 // Controllers --------------------------
 
 var changeSquare = function(square) {
@@ -66,7 +69,6 @@ var winChecker = function() {
 }
 
 var displayWin = function(winner, board, layout) {
-	debugger;
 	for (var i = 0; i < layout.length; i++) {
 		board[layout[i]].style.color = 'red';
 	}
