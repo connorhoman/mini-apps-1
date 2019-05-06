@@ -18,3 +18,16 @@
   height: 50px;
   width: 200px;
 }
+
+h1 {
+  padding: 50px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.scoreboard {
+	padding:25px;
+	display:inline;
+	height: 50px;
+	width: 50px;
+	background-color: rgba(255, 255, 255, 0.8);
+}
