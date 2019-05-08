@@ -9,11 +9,11 @@ app.use(bodyParser.urlencoded({extended: true }));
 
 app.post('/', function(req, res) {
   console.log('Recieved POST Request');
-  res.write(`<!DOCTYPE html>
+  res.write(`
+  	<!DOCTYPE html>
 	<html> 
 	  <head>
 	  </head>
-
 	  <body>
 	  	<h1> CSV Report Generator: </h1>
 	  	<form action='http://127.0.0.1:3000/' method='POST'> 
@@ -22,8 +22,12 @@ app.post('/', function(req, res) {
 	  	</form>
 	  </body>
 	  <script src='app.js'></script>
-	</html>`)
-  res.end(parse.parseCSV(req.body.textInput));
+	</html>
+  `)
+  var string = parse.parseCSV(req.body.textInput);
+  var array = string.split('\n');
+  console.log(array);
+  res.end(array.join(`<br>`));
 });
 
 app.listen(port, () => console.log('Listening on', port));

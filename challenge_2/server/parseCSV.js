@@ -12,9 +12,11 @@ exports.parseCSV = function(data) {
   }
 	
   var recursive = function(node) {
+  	var nodeArray = [];
     for (var i = 0; i < keys.length; i++) {
-	  result.push(node[keys[i]]);
+	  nodeArray.push(node[keys[i]]);
 	}
+	result.push(nodeArray);
 	if (node.children.length > 0) {
 	  for (var j = 0; j < node.children.length; j++) {
 	    recursive(node.children[j]);
@@ -23,7 +25,8 @@ exports.parseCSV = function(data) {
   }
 
   recursive(obj);
-  return result.join(',');
+  
+  return result.join('\n');
 }
 
 // The server must flatten the JSON hierarchy, mapping each item/object in the JSON to a single 
