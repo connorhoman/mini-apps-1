@@ -25,9 +25,8 @@ app.post('/', function(req, res) {
 	</html>
   `)
   var string = parse.parseCSV(req.body.textInput);
-  var array = string.split('\n');
-  console.log(array);
-  res.end(array.join(`<br>`));
+  res.write(`<h2> CSV: </h2>`);
+  res.end(string.split('\n').join(`<br>`));
 });
 
 app.listen(port, () => console.log('Listening on', port));
