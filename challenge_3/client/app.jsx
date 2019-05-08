@@ -1,8 +1,11 @@
 class App extends React.Component {
   constructor(props) {
   	super(props);
-  	this.state = {currentPage: 'home'}
+  	this.state = {currentPage: 'f1'}
   }
+
+
+
   render() {
   	if (this.state.currentPage === 'home') {
   	  return (
@@ -31,6 +34,7 @@ class F1 extends App {
 		super(props);
 	}
 	render() {
+	  return (
 		<div> 
 		  <form>
 		    Name: <br />
@@ -44,7 +48,7 @@ class F1 extends App {
 		  </form>
 		  <button id='next1' name='next1' type='button'>Next</button>
 		</div>
-	}
+	)}
 }
 
 class F2 extends App {
@@ -52,6 +56,7 @@ class F2 extends App {
 		super(props);
 	}
 	render() {
+		return (
 		<div> 
 		  <form>
 		    Address Line 1: <br />
@@ -74,7 +79,7 @@ class F2 extends App {
 		  </form>
 		  <button id='next2' name='next2' type='button'>Next</button>
 		</div>
-	}
+	)}
 }
 
 class F3 extends App {
@@ -82,6 +87,7 @@ class F3 extends App {
 		super(props);
 	}
 	render() {
+		return (
 		<div> 
 		  <form>
 		    Credit Card #: <br />
@@ -98,11 +104,7 @@ class F3 extends App {
 		  </form>
 		  <button id='next3' name='next3' type='button'>Next</button>
 		</div>
-	}
+	)}
 }
-
-
-
-
 
 ReactDOM.render(<App />, document.getElementById('app'));
