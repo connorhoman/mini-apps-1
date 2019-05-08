@@ -8,8 +8,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true }));
 
 app.post('/', function(req, res) {
-	console.log('Recieved POST Request');
-	res.end(parse.parseCSV(req.body.textInput));
+  console.log('Recieved POST Request');
+  res.end(parse.parseCSV(req.body.textInput));
 });
 
 app.listen(port, () => console.log('Listening on', port));
