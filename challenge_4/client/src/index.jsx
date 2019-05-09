@@ -9,7 +9,12 @@ class Board extends React.Component {
   }
 
   handleClick() {
-  	console.log('board clicked');
+  	if (this.state.turn === 'player1') {
+  		this.setState({turn: 'player2'})
+  	}
+  	if (this.state.turn === 'player2') {
+  		this.setState({turn: 'player1'})
+  	}
   }
 
   createBoard() { 
@@ -47,6 +52,7 @@ class Square extends Board {
 
   handleClick() {
  	this.props.handleClick();
+ 	
   }
 
   render() {
