@@ -22,7 +22,7 @@ class Board extends React.Component {
 	for (let i = 0; i < 7; i++) {
 	  let children = [];
 	  for (let j = 0; j < 8; j++) {
-        children.push(<Square handleClick={this.handleClick} id={`${i}, ${j}`} key={`${i}, ${j}`} />)
+        children.push(<Square handleClick={this.handleClick} turn={this.state.turn} id={`${i}, ${j}`} key={`${i}, ${j}`} />)
       }
       board.push(<tr key={`${i}`}>{children}</tr>);
 	}
@@ -52,15 +52,24 @@ class Square extends Board {
 
   handleClick() {
  	this.props.handleClick();
- 	
+ 	if (this.props.turn === 'player1') {
+ 		this.setState({player1: true, playable: false});
+ 	}
+ 	if (this.props.turn === 'player2') {
+ 		this.setState({player2: true, playable: false})
+ 	}
   }
 
   render() {
+  	let styles1 = {backgroundColor: 'red'};
+  	let styles2 = {backgroundColor: 'blue'}
+
+
   	if (this.state.player1) {
-  	  return (<td style="background-color: blue" onClick={() => {this.handleClick()}} ></td>)
+  	  return (<td style={styles1} onClick={() => {this.handleClick()}} ></td>);
   	}
   	if (this.state.player2) {
-  	  return (<td style="background-color: red" onClick={() => {this.handleClick()}} ></td>)
+  	  return (<td style={styles2} onClick={() => {this.handleClick()}} ></td>);
   	}
 	return (<td onClick={() => {this.handleClick()}} ></td>);
   }
