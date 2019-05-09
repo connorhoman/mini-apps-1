@@ -15,6 +15,11 @@ class Board extends React.Component {
   	if (this.state.turn === 'player2') {
   		this.setState({turn: 'player1'})
   	}
+  	this.winChecker();
+  }
+
+  winChecker() {
+  	
   }
 
   createBoard() { 
@@ -63,7 +68,6 @@ class Square extends Board {
   render() {
   	let styles1 = {backgroundColor: 'red'};
   	let styles2 = {backgroundColor: 'blue'}
-
 
   	if (this.state.player1) {
   	  return (<td style={styles1} onClick={() => {this.handleClick()}} ></td>);
