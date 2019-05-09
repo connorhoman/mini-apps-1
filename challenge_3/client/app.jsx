@@ -31,19 +31,19 @@ class App extends React.Component {
 	)}
   	if (this.state.currentPage === 'f1') {
   	  return (
-  		<F1 />
+  		<F1 handleButtonClick = {this.handleButtonClick}/>
   	)}
   	if (this.state.currentPage === 'f2') {
   	  return (
-  		<F2 />
+  		<F2 handleButtonClick = {this.handleButtonClick}/>
   	)}
   	if (this.state.currentPage === 'f3') {
   	  return (
-  		<F3 />
+  		<F3 handleButtonClick = {this.handleButtonClick}/>
   	)} 
   	if (this.state.currentPage === 'summary') {
   	  return (
-  		<Summary />	
+  		<Summary handleButtonClick = {this.handleButtonClick}/>	
   	)}     
   }
 }
@@ -61,7 +61,7 @@ class F1 extends App {
 		    <input type='text' name='name'/>
 		    <br />
 		    Email: <br />
-		    <input type='text' name='input'/>
+		    <input type='text' name='email'/>
 		    <br />
 		    Password: <br />
 		    <input type='text' name='password'/>
@@ -140,7 +140,7 @@ class Summary extends App {
   }
   render() {
 	return (
-	  <button id='purchase' type='submit' onClick={(e) => this.props.handleButtonClick(e)}>Next</button>
+	  <button id='purchase' type='submit' onClick={(e) => this.props.handleButtonClick(e)}>Purchase</button>
   )}
 }
 
