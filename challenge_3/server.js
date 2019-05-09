@@ -5,6 +5,11 @@ const mysql = require('mysql');
 const app = express();
 const port = 3000;
 const bodyparser = require('body-parser');
+
+app.use(bodyparser.urlencoded({extended: true}));
+app.use(bodyparser.json())
+app.use(express.static('public'));
+
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -19,15 +24,13 @@ db.connect(function(err) {
   }
 })
 
-app.use(express.static('public'));
 app.listen(port, () => console.log('Listening on port: ', port)); 
-
-
 
 // ROUTES -----------------------------------------------
 
 app.post('/', bodyparser, (req, res) => {
-	
+	console.log('received POST');
+	res.end('receiving response')
 })
 
 
