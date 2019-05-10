@@ -76,13 +76,14 @@ class Square extends Board {
   }
 
   handleClick() {
- 	this.props.handleClick();
+ 	
  	if (this.props.turn === 'player1') {
  		this.setState({player1: true, playable: false});
  	}
  	if (this.props.turn === 'player2') {
  		this.setState({player2: true, playable: false})
  	}
+ 	this.props.handleClick();
   }
 
   render() {
