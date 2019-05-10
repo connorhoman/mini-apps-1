@@ -82,7 +82,6 @@ class Board extends React.Component {
   	}
   	var tieChecker = function(array) {
   	  var tie = true;
-  	  console.log(array);
   	  for (var i = 0; i < array.length; i++) {
   		if (array[i] === 0) {
   		  tie = false;
