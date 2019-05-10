@@ -30,13 +30,73 @@ class Board extends React.Component {
   	  } 
   	}
   	var result = [];
-  	for (var i = 0; i < 6; i++) {
-  	  for (var j = 0; j < 7; j++) {
+  	for (var i = 0; i < 7; i++) {
+  	  for (var j = 0; j < 8; j++) {
   		var set = i.toString() + ', ' + j.toString();
   		result.push(getSquare(set));
   	  }
   	}
-  	console.log(result);
+  	var horizontalCheck = function(array) {
+  	  for (var i = 0; i < array.length; i++) {
+  		var rowEnds = [5, 6, 7, 13, 14, 15, 21, 22, 23, 29, 30, 31, 37, 38, 39, 45, 46, 47, 53, 54, 55];
+  		if (rowEnds.indexOf(i) > -1) {
+  		  continue;
+  		}
+  		if (array[i] === 1 && array[i + 1] === 1 && array[i + 2] === 1 && array[i + 3] === 1) {
+  		  console.log('Player 1 wins!');
+  		}
+  		if (array[i] === 2 && array[i + 1] === 2 && array[i + 2] === 2 && array[i + 3] === 2) {
+  		  console.log('Player 2 wins!');
+  		}
+  	  }
+  	}
+  	var verticalCheck = function(array) {
+  	  for (var i = 0; i < 33; i++) {
+  		if (array[i] === 1 && array[i + 8] === 1 && array[i + 16] === 1 && array[i + 24] === 1) {
+  		  console.log('Player 1 wins!');
+  		}
+  		if (array[i] === 2 && array[i + 8] === 2 && array[i + 16] === 2 && array[i + 24] === 2) {
+  		  console.log('Player 2 wins!');
+  		}
+  	  }
+  	}
+  	var majorDiagonalCheck = function(array) {
+  	  for (var i = 0; i < 29; i++) {
+  		if (array[i] === 1 && array[i + 9] === 1 && array[i + 18] === 1 && array[i + 27] === 1) {
+  		  console.log('Player 1 wins!');
+  		}
+  		if (array[i] === 2 && array[i + 9] === 2 && array[i + 18] === 2 && array[i + 27] === 2) {
+  		  console.log('Player 2 wins!');
+  		}
+  	  }
+  	}
+  	var minorDiagonalCheck = function(array) {
+  	  for (var i = 0; i < 33; i++) {
+  		if (array[i] === 1 && array[i + 7] === 1 && array[i + 14] === 1 && array[i + 21] === 1) {
+  		  console.log('Player 1 wins!');
+  		}
+  		if (array[i] === 2 && array[i + 7] === 2 && array[i + 14] === 2 && array[i + 21] === 2) {
+  		  console.log('Player 2 wins!');
+  		}
+  	  }
+  	}
+  	var tieChecker = function(array) {
+  	  var tie = true;
+  	  console.log(array);
+  	  for (var i = 0; i < array.length; i++) {
+  		if (array[i] === 0) {
+  		  tie = false;
+  		}
+  	  }
+  	  if (tie) {
+  		console.log('TIE!');
+  	  }
+  	}
+  	horizontalCheck(result);
+  	verticalCheck(result);
+  	majorDiagonalCheck(result);
+  	minorDiagonalCheck(result);
+  	tieChecker(result);
   }
 
   createBoard() { 
@@ -74,12 +134,11 @@ class Square extends Board {
 
   handleClick() {
  	if (this.props.turn === 'player1') {
- 	  this.setState({player1: true, playable: false});
+ 	  this.setState({player1: true, playable: false}, () => {this.props.handleClick()});
  	}
  	if (this.props.turn === 'player2') {
- 	  this.setState({player2: true, playable: false})
+ 	  this.setState({player2: true, playable: false}, () => {this.props.handleClick()});
  	}
- 	this.props.handleClick();
   }
 
   render() {
