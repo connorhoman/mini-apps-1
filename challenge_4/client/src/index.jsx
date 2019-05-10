@@ -10,18 +10,17 @@ class Board extends React.Component {
 
   handleClick() {
   	if (this.state.turn === 'player1') {
-  		this.setState({turn: 'player2'});
+  	  this.setState({turn: 'player2'});
   	}
   	if (this.state.turn === 'player2') {
-  		this.setState({turn: 'player1'});
+  	  this.setState({turn: 'player1'});
   	}
   	this.winChecker();
   }
 
   winChecker() {
   	var getSquare = function(coords) {
-  	  var ele = document.getElementById(coords);
-  		
+  	  var ele = document.getElementById(coords);	
   	  if (ele.getAttribute('player1') === 'true') {
   		return 1;
   	  } else if (ele.getAttribute('player2') === 'true') {
@@ -30,7 +29,6 @@ class Board extends React.Component {
   		return 0;
   	  } 
   	}
-
   	var result = [];
   	for (var i = 0; i < 6; i++) {
   	  for (var j = 0; j < 7; j++) {
@@ -38,7 +36,6 @@ class Board extends React.Component {
   		result.push(getSquare(set));
   	  }
   	}
-
   	console.log(result);
   }
 
@@ -76,12 +73,11 @@ class Square extends Board {
   }
 
   handleClick() {
- 	
  	if (this.props.turn === 'player1') {
- 		this.setState({player1: true, playable: false});
+ 	  this.setState({player1: true, playable: false});
  	}
  	if (this.props.turn === 'player2') {
- 		this.setState({player2: true, playable: false})
+ 	  this.setState({player2: true, playable: false})
  	}
  	this.props.handleClick();
   }
