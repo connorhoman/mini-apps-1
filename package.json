@@ -17,7 +17,7 @@
   "homepage": "https://github.com/connorhoman/hrsf116-mini-apps-1#readme",
   "description": "",
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.18.2",
     "nodemon": "^1.19.0"
   }
 }
